@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+
+# macOS / shell
+*.swp
+*.tmp
+
+# Node / Playwright cache
+node_modules/
+playwright-report/
+test-results/
+
+# Generated exports that can be recreated
+*.log
