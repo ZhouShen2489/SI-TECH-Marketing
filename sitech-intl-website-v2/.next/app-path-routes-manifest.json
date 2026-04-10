@@ -1,0 +1,17 @@
+{
+  "/api/contact/route": "/api/contact",
+  "/icon.png/route": "/icon.png",
+  "/_not-found/page": "/_not-found",
+  "/page": "/",
+  "/[locale]/partners/page": "/[locale]/partners",
+  "/[locale]/page": "/[locale]",
+  "/[locale]/solutions/page": "/[locale]/solutions",
+  "/[locale]/about/page": "/[locale]/about",
+  "/[locale]/solutions/telecom-operations/page": "/[locale]/solutions/telecom-operations",
+  "/[locale]/stories/page": "/[locale]/stories",
+  "/[locale]/contact/page": "/[locale]/contact",
+  "/[locale]/thank-you/page": "/[locale]/thank-you",
+  "/[locale]/solutions/teamshub-business-os/page": "/[locale]/solutions/teamshub-business-os",
+  "/[locale]/partnership/page": "/[locale]/partnership",
+  "/[locale]/privacy/page": "/[locale]/privacy"
+}

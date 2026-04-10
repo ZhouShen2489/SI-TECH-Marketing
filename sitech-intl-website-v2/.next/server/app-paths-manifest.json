@@ -1,0 +1,17 @@
+{
+  "/api/contact/route": "app/api/contact/route.js",
+  "/icon.png/route": "app/icon.png/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/[locale]/partners/page": "app/[locale]/partners/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/solutions/page": "app/[locale]/solutions/page.js",
+  "/[locale]/about/page": "app/[locale]/about/page.js",
+  "/[locale]/solutions/telecom-operations/page": "app/[locale]/solutions/telecom-operations/page.js",
+  "/[locale]/stories/page": "app/[locale]/stories/page.js",
+  "/[locale]/contact/page": "app/[locale]/contact/page.js",
+  "/[locale]/thank-you/page": "app/[locale]/thank-you/page.js",
+  "/[locale]/solutions/teamshub-business-os/page": "app/[locale]/solutions/teamshub-business-os/page.js",
+  "/[locale]/partnership/page": "app/[locale]/partnership/page.js",
+  "/[locale]/privacy/page": "app/[locale]/privacy/page.js"
+}
