@@ -1,7 +1,7 @@
 import { ClientRedirect } from "@/components/client-redirect";
 import { isLocale, withLocale } from "@/lib/site";
 
-export default async function PartnersRedirectPage({
+export default async function MarketRedirectPage({
   params,
 }: {
   params: Promise<{ locale: string }>;

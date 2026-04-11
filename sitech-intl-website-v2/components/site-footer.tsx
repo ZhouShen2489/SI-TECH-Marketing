@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { siteContent, copy } from "@/content/siteContent";
+import { siteContent, copy, copyList } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
 import { withLocale } from "@/lib/site";
 
@@ -13,8 +13,8 @@ export function SiteFooter({ locale }: SiteFooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200 bg-[#f5f1e7]">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
+    <footer className="border-t border-slate-200 bg-[#f7f8fa]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr] lg:px-8">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white p-1.5 shadow-card">
@@ -46,6 +46,19 @@ export function SiteFooter({ locale }: SiteFooterProps) {
                 >
                   {copy(locale, item.label)}
                 </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-tide">
+            {copy(locale, siteContent.footer.focusTitle)}
+          </p>
+          <div className="space-y-3">
+            {copyList(locale, siteContent.footer.focusItems).map((item) => (
+              <div key={item} className="text-sm leading-7 text-slate-700">
+                {item}
               </div>
             ))}
           </div>

@@ -78,6 +78,11 @@ export default async function TeamshubBusinessOsPage({
               className="h-auto w-full"
             />
           </div>
+          <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
+            {locale === "en"
+              ? "Placeholder area for Teamshub structure diagrams, workflow maps, or role-based collaboration visuals."
+              : "这里预留 Teamshub 结构图、工作流图或角色协同示意图占位。"}
+          </div>
           <div className="mt-10">
             <Link
               href={withLocale(locale, "/contact")}

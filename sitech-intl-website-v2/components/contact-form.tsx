@@ -16,6 +16,7 @@ export function ContactForm({ locale }: ContactFormProps) {
   const router = useRouter();
   const pathname = usePathname();
   const form = siteContent.contactPage.form;
+  const isStaticExport = process.env.NEXT_PUBLIC_IS_STATIC_EXPORT === "true";
   const [status, setStatus] = useState<SubmitState>("idle");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -42,6 +43,32 @@ export function ContactForm({ locale }: ContactFormProps) {
           ? new URL(pathname, window.location.origin).toString()
           : "",
     };
+
+    if (isStaticExport) {
+      const subject =
+        locale === "en"
+          ? `Website inquiry from ${payload.fullName || payload.workEmail || "visitor"}`
+          : `网站咨询：${payload.fullName || payload.workEmail || "访客"}`;
+      const body = [
+        `Name: ${payload.fullName}`,
+        `Work Email: ${payload.workEmail}`,
+        `Company: ${payload.companyName}`,
+        `Job Title: ${payload.jobTitle}`,
+        `Phone: ${payload.phone}`,
+        `Industry: ${payload.industry}`,
+        `Interested In: ${payload.interestedIn}`,
+        "",
+        "Message:",
+        payload.message,
+        "",
+        `Locale: ${payload.locale}`,
+        `Page URL: ${payload.pageUrl}`,
+      ].join("\n");
+
+      window.location.href = `mailto:${siteContent.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus("success");
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -170,12 +197,17 @@ export function ContactForm({ locale }: ContactFormProps) {
         >
           {status === "loading" ? copy(locale, form.loading) : copy(locale, form.submit)}
         </button>
-        <p className="text-sm leading-7 text-slate-600">{copy(locale, siteContent.contactPage.note)}</p>
+        <p className="text-sm leading-7 text-slate-600">
+          {copy(
+            locale,
+            isStaticExport ? siteContent.contactPage.pagesNote : siteContent.contactPage.note,
+          )}
+        </p>
       </div>
 
       {status === "success" ? (
         <p className="rounded-2xl bg-[#eef8f2] px-4 py-3 text-sm text-[#1e6a3d]">
-          {copy(locale, form.success)}
+          {copy(locale, isStaticExport ? siteContent.contactPage.pagesNote : form.success)}
         </p>
       ) : null}
       {status === "error" ? (

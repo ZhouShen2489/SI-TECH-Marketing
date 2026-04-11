@@ -5,7 +5,7 @@ import { PageHero, SectionHeading } from "@/components/page-sections";
 import { siteContent, copy } from "@/content/siteContent";
 import { isLocale, withLocale } from "@/lib/site";
 
-export default async function TelecomOperationsPage({
+export default async function DigitalIndustryPlatformsPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -16,7 +16,7 @@ export default async function TelecomOperationsPage({
     notFound();
   }
 
-  const detail = siteContent.solutionDetails.telecom;
+  const detail = siteContent.solutionDetails.industry;
 
   return (
     <>
@@ -74,19 +74,8 @@ export default async function TelecomOperationsPage({
           </div>
           <div className="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-[#fbfcfd] p-6 text-sm leading-7 text-slate-600">
             {locale === "en"
-              ? "Placeholder area for operator support architecture, process diagrams, or product-structure visuals."
-              : "这里预留运营商支撑架构图、流程图或产品结构图占位。"}
-          </div>
-          <div className="mt-10 rounded-[2rem] border border-slate-200 bg-[#f7f9fb] p-6">
-            <h3 className="font-serif text-2xl text-ink">{copy(locale, detail.storyTitle)}</h3>
-            <ul className="mt-5 space-y-3">
-              {detail.storyItems[locale].map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-7 text-slate-700">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-signal" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+              ? "Placeholder area for platform architecture diagrams or industry workflow visuals."
+              : "这里预留产业平台架构图或业务流程结构图占位。"}
           </div>
           <div className="mt-10">
             <Link

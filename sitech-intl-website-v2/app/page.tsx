@@ -1,5 +1,11 @@
-import { redirect } from "next/navigation";
+import { ClientRedirect } from "@/components/client-redirect";
 
 export default function IndexPage() {
-  redirect("/en");
+  return (
+    <ClientRedirect
+      href="/en"
+      message="Redirecting to the English homepage..."
+      linkLabel="Open homepage"
+    />
+  );
 }

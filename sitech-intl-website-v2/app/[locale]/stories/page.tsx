@@ -28,9 +28,7 @@ export default async function StoriesPage({
 
       <section className="bg-[#f7f4ed] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            title={locale === "en" ? "Open a story to see the problem, approach, and result" : "展开每个故事，查看问题、做法和结果"}
-          />
+          <SectionHeading title={copy(locale, siteContent.storiesPage.introTitle)} />
           <div className="mt-12">
             <StoryAccordion locale={locale} />
           </div>

@@ -145,3 +145,12 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## GitHub Pages
+
+This repository includes a dedicated GitHub Pages workflow in `.github/workflows/deploy-pages.yml`.
+
+- Local development remains unchanged with `npm run dev`.
+- The Pages deployment uses `npm run build:pages`, which enables a static export only for the GitHub Actions build.
+- During the Pages build, the server-only contact API route is temporarily disabled because GitHub Pages cannot run backend code.
+- The deployed Pages site keeps the contact form UI, but submission falls back to opening the visitor's email client instead of calling `/api/contact`.

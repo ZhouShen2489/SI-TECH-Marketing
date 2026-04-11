@@ -1,580 +1,472 @@
-# Codex 执行说明：双语官网精简版 PRD
+# 官网 v2 PRD
 
-## 目标
+## 1. 项目目标
 
-为 Si-Tech 制作一个**简洁、现代、可用于获客的双语官网**。
+为 Si-Tech Intl 重写官网内容与信息架构，使网站不再停留在“泛化的双语科技公司介绍”，而是清楚表达：
 
-网站定位：
+- 我们背后是有 30 年积累的思特奇能力体系
+- 我们最强、最可信的主战场是运营商 IT 支撑与服务域
+- 我们同时具备数字产业平台与 AI 产品服务能力
+- 我们可以以解决方案、联合推进、试点合作的方式进入海外市场
 
-- 以**合作解决方案**为主，而不是成熟 SaaS 产品官网
-- 用**大型技术团队与电信级经验**做信用背书
-- 以**合作、试点、联合推进项目**为主要转化目标
-- 为未来可售卖/可试点产品预留位置
+网站应优先服务以下目标：
 
-注意：
+- 建立可信度
+- 让客户快速看懂主营业务
+- 让客户知道当前最值得聊的 5 个解决方案方向
+- 通过 Contact 引导进入线索与后续沟通
+- 保留此前官网中“简洁、现代、对海外客户友好、适合获客”的优点
 
-- **不要很具体强调“美国公司主体”**
-- 只通过 **Contact 页面中的美国联系方式** 来体现美国市场接口
-- 网站整体应让用户感受到：
-  - 有国际合作能力
-  - 有大型团队支持
-  - 可以从合作、方案、试点开始
+## 2. 核心定位
 
----
+官网定位不是标准 SaaS 产品站，也不是总部宣传册国际版。
 
-## 交付要求
+官网应呈现为：
 
-请 Codex 直接实现一个可运行的官网前端。
+- 面向海外市场的解决方案与合作入口
+- 以运营商与复杂业务支撑经验为核心背书
+- 同时展示数字产业平台、AI 服务、企业协同与定制系统能力
+- 可以从试点、合作项目、联合交付开始推进
 
-### 技术要求
+明确约束：
 
-- 现代简洁风格
-- 深蓝色为主色调，风格专业、友好、可信
-- 响应式设计，PC 和手机都能看
-- 支持中英文切换
-- 页面内容先使用本 PRD 提供的文案
-- 文案要集中管理，方便后续修改
+- 不把 Teamshub 误写成公司的主营业务
+- 不把 Stories 写成另一套 Solutions 说明
+- 不把 Marketplace 做成传统 logo 墙
+- 不因资料缺失而删掉重要模块，缺图和缺细节允许先占位
+- 不因为公司背景更强就把首页写成重总部、轻获客的说明书
 
-### 推荐实现方式
+## 3. 内容素材来源
 
-- Next.js
-- Tailwind CSS
-- i18n 内容使用单独配置文件管理
-- 所有中英文文案按模块成对放在一起，不要分散
+本轮文档与后续官网改写，应主要吸收以下材料：
 
-推荐内容结构示例：
+- `问题单.md`
+- `1.思特奇公司介绍海外版@20260317.pptx`
+- `2.思特奇产品介绍-运营商域@20260317.pptx`
+- `4.思特奇产品介绍-数字产业域@20260317.pptx`
+- `5.思特奇产品介绍-AI域@20260317.pptx`
 
-- `/content/siteContent.ts`
-- 每个 section 下同时包含 `zh` 和 `en`
+素材使用原则：
 
-例如：
+- `公司介绍` 主要用于 About、首页可信度背书、主能力概览
+- `运营商域` 是最优先的解决方案内容来源
+- `数字产业域` 和 `AI域` 作为第二梯队重点方案
+- 优先使用可公开的真实客户名称、真实平台名称与真实项目类型
+- 若具体名称暂时不能公开，使用明确占位符而不是匿名化表述
 
-```ts
-hero: {
-  title: {
-    zh: '连接合作，推进解决方案落地',
-    en: 'Partner to Turn Solutions into Real Business Outcomes'
-  },
-  subtitle: {
-    zh: '我们结合大型技术团队能力，与本地伙伴共同推进电信、客户服务、运营与数字化项目。',
-    en: 'We work with local partners and a strong engineering backbone to move telecom, service, operations, and digital projects forward.'
-  }
-}
-```
+## 4. 目标受众
 
----
+- 海外运营商与通信服务相关客户
+- MVNO、国际业务、渠道与分销合作方
+- 需要平台化支撑、客户服务、营销门户、业务运营体系的企业客户
+- 希望与具备复杂系统交付能力团队合作的伙伴
 
-## 网站结构
+访问者希望快速回答的问题：
 
-控制内容，不要做太多页面。
+- 你们是谁，背后能力有多强
+- 你们最擅长做什么
+- 有没有运营商相关的真实经验
+- AI、产业平台、企业协同这些方向你们能做到什么程度
+- 能不能先从一个明确项目或试点开始
 
-### 必要页面
+## 5. 网站结构
 
-1. Home
-2. Solutions
-3. Partnership
-4. Stories
-5. About
-6. Contact
+导航改为：
 
-页头导航：
-
-- Logo
 - Home
 - Solutions
 - Partnership
 - Stories
+- Marketplace
 - About
 - Contact
-- 中英文切换按钮
 
-页脚内容：
+页面职责定义：
 
-- 简短品牌介绍
-- 页面导航
-- 联系方式
-- LinkedIn 占位
-- 版权信息
+- `Home`：建立可信度，讲清主营业务与重点解决方案
+- `Solutions`：集中展示 5 个方向，并进入详情页
+- `Partnership`：说明合作方式、联合推进模式、适合什么类型的伙伴
+- `Stories`：展示真实合作案例；无法公开的名称使用明确占位符
+- `Marketplace`：像应用中心一样组织的产品页，先展示我们的产品，再展示可合作推进的伙伴产品
+- `About`：强化公司背景、规模、积累、行业覆盖
+- `Contact`：明确收口，承接线索
 
----
+## 6. Home 页面重构要求
 
-## 页面目标与内容
+### 6.1 页面目标
 
-# 1. Home
+首页应优先完成以下叙事顺序：
 
-## 目标
+1. 让访客知道 Si-Tech Intl 背后不是小团队，而是有大型交付能力支持
+2. 让访客知道思特奇最强的是运营商与复杂业务支撑
+3. 让访客看到第二梯队重点方向：数字产业平台与 AI
+4. 让访客知道还有企业协同与定制系统可作为具体切入口
+5. 让访客继续看 Solutions、Stories、Contact
 
-让访客快速明白：
+首页仍然要维持获客导向：
 
-- 你们是谁
-- 你们帮助什么类型的客户
-- 你们怎么合作
-- 为什么值得信任
+- 首屏不堆过多背景材料
+- 每个区块都要帮助客户更快决定“是否值得继续了解”
+- 可信度背书服务于转化，而不是替代转化
 
-## 区块
+### 6.2 首页区块顺序
+
+首页区块固定为：
 
 1. Hero
-2. Why Work With Us
-3. Solution Buckets
-4. How We Work
-5. Stories Preview
-6. CTA
+2. 持续滚动的优势横幅
+3. 国内思特奇主营业务与能力背书
+4. 我们擅长解决的问题
+5. 解决方案选择区
+6. 合作故事预览
+7. About 预览
+8. CTA
 
-## 文案
+明确删除：
 
-### Hero
+- “客户最常感受到的问题”区块
 
-- Title
-  - zh: 连接合作，推进解决方案落地
-  - en: Partner to Turn Solutions into Real Business Outcomes
+### 6.3 Hero
 
-- Subtitle
-  - zh: 我们结合大型技术团队能力，与本地伙伴共同推进电信、客户服务、运营与数字化项目。
-  - en: We work with local partners and a strong engineering backbone to move telecom, customer service, operations, and digital projects forward.
+Hero 要传递的是“我们具备复杂业务支撑能力，并愿意从明确范围开始合作”。
 
-- Primary CTA
-  - zh: 探讨合作
-  - en: Explore Partnership
+语气要求：
 
-- Secondary CTA
-  - zh: 查看解决方案
-  - en: View Solutions
+- 不喊口号
+- 不写空泛数字化转型
+- 直接面向运营、服务、平台、协同等业务结果
 
-### Why Work With Us
+示例方向：
 
-三个卡片即可。
+- zh：把复杂业务支撑、运营协同与平台建设推进到可落地的下一步
+- en: Move complex service operations, platform support, and cross-team execution into a practical next phase
 
-- Card 1
-  - zh title: 大型技术团队支持
-  - en title: Backed by a Strong Engineering Team
-  - zh text: 背靠长期深耕复杂系统与数字化交付的大型团队，具备从方案到落地的支撑能力。
-  - en text: Supported by a large team experienced in complex systems and digital delivery, from solution planning to implementation.
+### 6.4 持续滚动横幅
 
-- Card 2
-  - zh title: 合作导向
-  - en title: Partnership-Oriented
-  - zh text: 当前阶段以合作解决方案、联合推进项目、试点探索为主，而不是单一标准产品销售。
-  - en text: Our current focus is solution partnership, joint project delivery, and pilot collaboration rather than one-size-fits-all product sales.
+横幅使用连续滚动标签，不再保留当前三条静态短句。
 
-- Card 3
-  - zh title: 面向实际业务
-  - en title: Built Around Real Business Needs
-  - zh text: 围绕电信、客户服务、运营流程和企业数字化等实际场景，帮助客户推进项目与能力建设。
-  - en text: We focus on real business scenarios across telecom, service operations, workflows, and digital enablement.
+滚动内容应来自可感知能力，而不是口号。优先使用：
 
-### Solution Buckets
+- 30 年行业积累
+- 运营商长期服务经验
+- BOSS / 业务支撑能力
+- MVNO 全球化支撑
+- 宽带业务支撑平台
+- 智能客服云平台
+- 统一营销服务门户
+- 产业中台与数据要素平台
+- AI 应用 + 开发 + 运营
+- 复杂系统联合交付
+- 大型研发团队支持
+- 从试点到持续优化
 
-三个桶即可。
+### 6.5 国内思特奇主营业务与能力背书
 
-- Bucket 1
-  - zh title: 电信与运营支撑方案
-  - en title: Telecom & Operational Support Solutions
-  - zh text: 面向电信、通信服务及相关业务场景，支持运营、服务、流程与平台能力建设。
-  - en text: Solutions for telecom and related service environments, supporting operations, service workflows, and platform enablement.
+该区块要放在首页中段靠前位置，作为主营业务说明，不再把 Teamshub 误放在这里。
 
-- Bucket 2
-  - zh title: AI 与客户服务赋能
-  - en title: AI & Customer Service Enablement
-  - zh text: 支持知识助手、服务流程优化、客服协同与自动化相关场景。
-  - en text: Support for knowledge assistants, service workflow optimization, customer support collaboration, and automation scenarios.
+该区块应吸收公司介绍中的公开表达，重点包括：
 
-- Bucket 3
-  - zh title: 定制化业务系统与数字化交付
-  - en title: Custom Business Systems & Digital Delivery
-  - zh text: 包括门户、CRM、工作流、仪表盘、集成与企业内部工具等定制化支持。
-  - en text: Including portals, CRM, workflows, dashboards, integrations, and internal business tools.
+- 1995 年成立，30 年积累
+- 3000+ 员工
+- 85%+ 研发人员占比
+- 服务运营商、政府、企业客户
+- 在运营商、城市、产业、AI、算力等方向形成体系化能力
 
-### How We Work
+首页表达要以海外访客能理解的方式重写，不直接照搬总部 PPT 句式。
 
-四步即可。
+### 6.6 我们擅长解决的问题
 
-- Step 1
-  - zh: 需求沟通
-  - en: Discovery
+标题改为：
 
-- Step 2
-  - zh: 方案设计
-  - en: Solution Design
+- zh：我们擅长解决的问题
+- en: Problems We Help Solve
 
-- Step 3
-  - zh: 试点推进
-  - en: Pilot Execution
+这里固定展示 5 个解决方案方向，并允许进入详情页：
 
-- Step 4
-  - zh: 联合交付与优化
-  - en: Joint Delivery & Optimization
+1. 运营商 IT 支撑与服务域
+2. 数据要素与数字产业平台
+3. AI 产品与智能客服
+4. Teamshub 协同与项目推进
+5. 定制化业务系统与企业门户 / 运营平台
 
-### Stories Preview
+排序要求：
 
-标题：
+- 运营商域永远第一
+- 数字产业域与 AI 紧随其后
+- Teamshub 与定制系统在后
 
-- zh: 合作故事与场景参考
-- en: Stories & Use Cases
+### 6.7 解决方案选择区
 
-副文案：
+首页应有一个“解决方案选择区”，与上面的 5 个方向保持一致。
 
-- zh: 通过故事化方式展示典型合作场景，帮助客户更快理解我们如何参与项目推进。
-- en: Story-based use cases help visitors quickly understand how we support project delivery and collaboration.
+交互要求：
 
-### CTA
+- 可使用下拉、展开、分组切换等方式
+- 不做五个平均浅卡片
+- 分类固定为：
+  - Telecom
+  - Enterprise & Platforms
+  - AI & Service
 
-- zh title: 从一次合作讨论开始
-- en title: Start with a Practical Conversation
-- zh text: 如果你正在寻找可合作的技术与解决方案伙伴，我们愿意一起讨论项目机会。
-- en text: If you are looking for a collaborative technology and solution partner, let’s explore where we can work together.
-- button zh: 联系我们
-- button en: Contact Us
+分类映射建议：
 
----
+- `Telecom`
+  - 运营商 IT 支撑与服务域
+- `Enterprise & Platforms`
+  - 数据要素与数字产业平台
+  - Teamshub 协同与项目推进
+  - 定制化业务系统与企业门户 / 运营平台
+- `AI & Service`
+  - AI 产品与智能客服
 
-# 2. Solutions
+### 6.8 合作故事预览
 
-## 目标
+首页 Stories Preview 必须来自真实合作结构，不允许只是把方案换个名字再说一遍。
 
-清楚呈现当前能谈、能合作、能落地的方向。
+每个故事至少包含：
 
-## 页面区块
+- 客户背景或场景
+- 关键问题
+- 采用的解决方案方向
+- 推进方式
+- 结果或阶段性效果
 
-- 页面标题
-- 三个 solution sections
-- Future Product Placeholder
+第一版优先使用真实公开名称，例如：
+
+- 中国联通宽带业务支撑平台
+- 黔牛帮肉牛产业数智化平台
+- 中国移动智能客服平台
+
+如果名称暂时不能公开，使用明确占位符，例如：
+
+- `[国际运营商名称占位]` 统一营销服务门户
+
+### 6.9 About 预览
+
+首页增加 About 预览，用来承接“这家公司为什么值得信任”。
+
+该区块可使用简短数据或简要段落，重点是：
+
+- 历史积累
+- 行业服务范围
+- 团队规模
+- 平台与交付能力
+
+### 6.10 CTA
+
+CTA 应强调“从一次明确的业务讨论开始”，而不是过度销售。
+
+## 7. Solutions 页面要求
+
+### 7.1 页面目标
+
+让访客清楚看见当前最值得沟通的 5 个方向，并能进入详情页。
+
+### 7.2 页面结构
+
+- 页面总标题
+- 解决方案分类导航
+- 五个方向的概览
+- 重点方向详情入口
+- 与 Stories 的关联入口
 - CTA
 
-## 文案
+### 7.3 五个固定方向
 
-### Page Header
+#### 1. 运营商 IT 支撑与服务域
 
-- zh title: 解决方案
-- en title: Solutions
-- zh subtitle: 当前以合作解决方案为主，聚焦可推进、可试点、可联合落地的业务方向。
-- en subtitle: Our current focus is partnership-based solutions that can be explored, piloted, and delivered together.
+这是最重要方向，应吸收以下公开能力点：
 
-### Section 1
+- 运营商 BOSS 与全业务办理
+- 客户全生命周期管理
+- 计费结算与分成支撑
+- MVNO 全球化业务支撑
+- 宽带业务支撑平台
+- 智能客服云平台
+- 统一营销服务门户
 
-- zh title: 电信与运营支撑方案
-- en title: Telecom & Operational Support Solutions
-- zh bullets:
-  - 运营支撑相关流程与平台建设
-  - 服务与业务协同场景支持
-  - 面向复杂业务的系统能力延展
+详情页应允许先放：
 
-- en bullets:
-  - Operational support workflows and platform enablement
-  - Service and business coordination scenarios
-  - System capability extension for complex business environments
+- 图片占位
+- 架构图占位
+- 落地案例占位
+- 常见切入口占位
 
-### Section 2
+常见切入口要写得更具体，例如：
 
-- zh title: AI 与客户服务赋能
-- en title: AI & Customer Service Enablement
-- zh bullets:
-  - 知识助手与服务支持场景
-  - 客服流程优化与协同
-  - 自动化与质量提升相关探索
+- MVNO 业务快速搭建
+- 宽带受理到开通的流程整合
+- 客服、工单、服务运营闭环
+- 国际化门户与渠道运营
 
-- en bullets:
-  - Knowledge assistant and service support use cases
-  - Customer support workflow optimization and collaboration
-  - Automation and service quality improvement initiatives
+#### 2. 数据要素与数字产业平台
 
-### Section 3
+重点表达：
 
-- zh title: 定制化业务系统与数字化交付
-- en title: Custom Business Systems & Digital Delivery
-- zh bullets:
-  - 门户与工作台
-  - CRM、流程、仪表盘与集成
-  - 企业内部数字化工具支持
+- 产业数智化架构
+- 产业互联生态
+- 产业智慧运营
+- 产业中台
+- 数据流、交易流、资金流、票据流、物流打通
+- 农产品、肉牛、输配电等产业场景平台
 
-- en bullets:
-  - Portals and operational workspaces
-  - CRM, workflows, dashboards, and integrations
-  - Internal business tools and digital enablement
+#### 3. AI 产品与智能客服
 
-### Future Product Placeholder
+重点表达：
 
-- zh title: 未来产品与试点能力
-- en title: Future Product & Pilot-Ready Offers
-- zh text: 这里预留给未来可售卖或可试点的产品模块，当前以合作和解决方案推进为主。
-- en text: This section is reserved for future productized or pilot-ready offers. For now, the site focuses on collaboration and solution delivery.
+- AI 应用 + 开发 + 运营三位一体
+- 智能客服
+- AI 数字员工
+- AI 工具链与运营服务
+- 从可试用能力到持续运营优化
 
-### CTA
+#### 4. Teamshub 协同与项目推进
 
-- zh: 想讨论哪类场景最适合合作？欢迎联系我们。
-- en: Want to discuss which scenario is the best fit for collaboration? Contact us.
+明确定位：
 
----
+- 不是公司主营业务总标题
+- 是面向获客、项目推进、跨团队协作、知识连续性的具体产品/协同能力
 
-# 3. Partnership
+#### 5. 定制化业务系统与企业门户 / 运营平台
 
-## 目标
+重点表达：
 
-突出“寻找本地合作伙伴、联合推进项目”的核心定位。
+- 企业门户
+- CRM / 工作流 / 运营后台
+- 统一服务入口
+- 定制化集成平台
 
-## 区块
+### 7.4 Solutions 与 Stories 的关系
 
-- Header
-- Who We Work With
-- Collaboration Models
-- CTA
+每个解决方案详情页都需要链接到对应 Stories。
 
-## 文案
+Stories 必须反向标记所属解决方案方向。
 
-### Header
+## 8. Stories 页面要求
 
-- zh title: 合作方式
-- en title: Partnership
-- zh subtitle: 我们希望与本地合作伙伴、客户与资源方共同推进可落地的业务机会。
-- en subtitle: We aim to work with local partners, clients, and business stakeholders to move practical opportunities forward.
+Stories 要重定义为“真实合作案例优先、占位符补充”的案例页。
 
-### Who We Work With
+单个故事应采用固定结构：
 
-- zh title: 适合合作的对象
-- en title: Who We Work With
-- zh items:
-  - 本地解决方案伙伴
-  - 行业顾问与业务资源方
-  - 需要技术与交付支持的企业
-  - 需要联合推进项目的合作方
+1. 客户场景
+2. 关键问题
+3. 解决方案切入
+4. 交付与协作方式
+5. 结果或阶段成果
 
-- en items:
-  - Local solution partners
-  - Industry advisors and business connectors
-  - Companies needing technical and delivery support
-  - Organizations seeking joint project execution
+故事命名优先使用真实公开名称。
 
-### Collaboration Models
+拿不到公开名称时，使用明确占位符，例如：
 
-- Model 1
-  - zh title: 联合拓展
-  - en title: Joint Opportunity Development
-  - zh text: 围绕共同客户或共同场景，一起定义机会并推进合作。
-  - en text: Explore shared customer opportunities or business scenarios together.
+- `[国际运营商名称占位]`
+- `[区域产业平台名称占位]`
+- `[企业门户项目名称占位]`
 
-- Model 2
-  - zh title: 试点合作
-  - en title: Pilot Collaboration
-  - zh text: 先从小范围试点或 MVP 开始，再逐步扩大合作。
-  - en text: Start with a focused pilot or MVP, then expand based on results.
+不使用“某客户”“某项目”这类匿名表述。
 
-- Model 3
-  - zh title: 联合交付
-  - en title: Joint Delivery
-  - zh text: 由本地伙伴与我们协同推进方案、执行与后续优化。
-  - en text: Work together on solution planning, execution, and continuous improvement.
+## 9. Partnership 页面要求
 
-### CTA
+Partnership 只回答“我们怎么合作”，不与 Marketplace 混用。
 
-- zh title: 寻找可以一起做成事情的伙伴
-- en title: Looking for Partners Who Want to Build Together
-- zh button: 联系沟通
-- en button: Let’s Connect
+应包含：
 
----
+- 适合什么类型的合作伙伴
+- 联合推进方式
+- 从需求沟通到试点再到交付的合作路径
+- 我们适合做什么，不适合做什么
 
-# 4. Stories
+## 10. Marketplace 页面要求
 
-## 目标
+`Marketplace` 取代现有 `Partners`，同时兼容旧 `Market` 链接跳转。
 
-用故事化方式展示能力，不需要真实客户名称。
+页面定义：
 
-## 要求
+- 产品优先页
+- 先展示我们的产品，再展示伙伴产品
+- 更像 Slack / Salesforce 的应用中心，而不是 logo 陈列页
 
-先做 3 个故事卡片，使用匿名描述。
+内容要求：
 
-### Story 1
+- 我们的产品优先展示，例如：
+  - Teamshub
+  - 智能客服 / 服务运营产品
+- 伙伴产品放在后半部分，例如 Helpport
+- 每个条目要说明：
+  - 这是什么产品或合作项
+  - 它适合什么场景
+  - 我们与它的关系
+  - 下一步如何进入沟通
+  - 它解决什么问题
+  - 适合什么客户
+  - 与 Si-Tech Intl 的关系
 
-- zh title: 支持复杂服务运营场景的数字化协同
-- en title: Enabling Digital Coordination for Complex Service Operations
-- zh summary: 围绕复杂业务流程、服务协同与平台支撑能力，帮助项目更高效推进。
-- en summary: Helping improve project execution through stronger workflow coordination, service support, and platform enablement.
+## 11. About 页面要求
 
-### Story 2
+About 要明显扩写，作为可信度背书页。
 
-- zh title: 面向客户服务与知识支持的 AI 场景探索
-- en title: Exploring AI for Customer Service and Knowledge Support
-- zh summary: 从知识支持、服务协同到流程优化，帮助企业逐步尝试 AI 场景落地。
-- en summary: Supporting gradual AI adoption across knowledge support, service collaboration, and workflow optimization.
+建议吸收的公司介绍信息：
 
-### Story 3
+- 公司成立时间
+- 30 年持续积累
+- 3000+ 员工
+- 85%+ 研发人员占比
+- 80+ 运营商客户
+- 30+ 政府单位
+- 2w+ 中小企业
+- 覆盖运营商、城市、产业、AI、算力等方向
 
-- zh title: 通过合作方式推进定制化业务系统建设
-- en title: Advancing Custom Business Systems Through Partnership
-- zh summary: 以合作和联合推进方式支持门户、流程、仪表盘与内部工具类项目。
-- en summary: Supporting portals, workflows, dashboards, and internal tools through collaborative execution.
+要求：
 
----
+- 不照搬总部宣讲句式
+- 用海外客户能理解的业务表达重写
+- 以“能力与交付可信度”为中心
 
-# 5. About
+## 12. Contact 页面要求
 
-## 目标
+Contact 继续作为唯一公开线索入口。
 
-简洁表达背景，不要过长。
+页面要让访客感受到：
 
-## 区块
+- 信息结构清楚
+- 公司是真实可联系的
+- 表单提交后会进入后续跟进流程
 
-- Header
-- Company Background
-- Why This Matters
+## 13. 内容与占位规则
 
-## 文案
+- 缺图时提供统一风格的占位图
+- 缺结构图时提供统一风格的结构图占位框
+- 缺细节时允许写占位文案，后续人工替换
+- 占位内容必须清楚标记，便于后续补充
 
-### Header
+## 14. 文风要求
 
-- zh title: 关于我们
-- en title: About
+参考 Salesforce 与 Slack 的写法，但要结合 Si-Tech Intl 的实际情况。
 
-### Company Background
+写法要求：
 
-- zh paragraph: 我们背后拥有长期深耕复杂系统、数字化平台与行业解决方案的大型技术团队。当前对外以合作解决方案与项目推进为主，结合本地沟通与协同能力，共同推动业务机会落地。
-- en paragraph: We are backed by a large technical team with long-term experience in complex systems, digital platforms, and industry solutions. Our current outward-facing model focuses on solution partnerships and project execution, combining local collaboration with broader engineering support.
+- 直接
+- 清楚
+- 克制
+- 面向业务结果
+- 避免总部宣传册语气
 
-### Why This Matters
+避免：
 
-- zh title: 为什么这很重要
-- en title: Why It Matters
-- zh text: 这意味着我们既能理解真实业务问题，也有能力结合合作伙伴一起推动项目从讨论走向落地。
-- en text: This means we bring both business understanding and the ability to work with partners to move projects from discussion into execution.
+- 空泛口号
+- 纯概念堆叠
+- 只讲技术不讲业务价值
+- 把所有能力写得同样重要
 
-注意：
+## 15. 成功标准
 
-- About 页面不要写太多历史年表
-- 不要出现太多中国政策化叙事
-- 不要把页面写成集团介绍册
+文档完成后，应能直接指导下一轮官网内容与结构改版。
 
----
+判断标准：
 
-# 6. Contact
-
-## 目标
-
-成为主要转化页。
-
-## 区块
-
-- Header
-- Contact Info
-- Form
-- Note
-
-## 文案
-
-### Header
-
-- zh title: 联系我们
-- en title: Contact
-- zh subtitle: 欢迎交流合作、试点和联合推进机会。
-- en subtitle: Let’s discuss partnerships, pilot opportunities, and project collaboration.
-
-### Contact Info
-
-保留字段：
-
-- Email
-- Phone
-- Location
-- LinkedIn
-
-注意：
-
-- 这里通过美国联系方式体现美国市场接口
-- 但不要在页面其他地方大篇幅强调美国公司主体
-
-### Form Fields
-
-- Name
-- Company
-- Email
-- Interest Area
-- Message
-
-按钮：
-
-- zh: 提交
-- en: Submit
-
-### Note
-
-- zh: 我们会尽快与你联系，讨论最合适的合作方式。
-- en: We will get back to you to discuss the most suitable way to work together.
-
----
-
-## 设计要求
-
-### 风格关键词
-
-- 简洁
-- 现代
-- 专业
-- 友好
-- 可信
-- 不花哨
-
-### 视觉建议
-
-- 主色：深蓝色
-- 大面积留白
-- 卡片式布局
-- 圆角适中
-- 字体清晰易读
-- 图标简洁
-- 不要复杂动画
-
-### 首页视觉建议
-
-- 可以用抽象科技感图形
-- 不要过度堆砌运营商设备或硬核工程图
-- 不要显得像传统外包公司
-- 更像现代 B2B solution partner 官网
-
----
-
-## 功能要求
-
-- 中英文切换
-- 顶部导航锚点或页面跳转
-- 联系表单
-- 基础 SEO title / meta
-- 移动端适配
-
-可选：
-
-- 表单提交后显示 thank you message
-- 预留接入邮件通知逻辑
-
----
-
-## 禁止事项
-
-Codex 不要做以下内容：
-
-- 不要写成成熟 SaaS 产品官网
-- 不要塞太多页面
-- 不要写太多宏大叙事
-- 不要出现大量中国政策语言
-- 不要把美国公司主体写得很重
-- 不要虚构大量客户 logo
-- 不要堆很多假数据
-
----
-
-## 最终目标
-
-让官网看起来像：
-
-**一个面向国际合作的现代解决方案与合作入口网站。**
-
-而不是：
-
-- 中国集团官网英文版
-- 纯外包公司官网
-- 假装成熟产品公司的官网
-
-Codex 应优先实现：
-
-1. 清晰结构
-2. 双语内容管理
-3. 现代风格前端
-4. 联系转化路径
-5. 后续方便继续加产品和案例
+- 首页逻辑与 `问题单.md` 一致
+- 运营商域的优先级清晰可见
+- 数字产业域与 AI 域进入主解决方案体系
+- Teamshub 被放回正确定位
+- Marketplace 替代 Partners 的结构清楚
+- Stories 不再是泛化方案介绍
+- 缺图、缺细节、未授权案例都有明确处理办法

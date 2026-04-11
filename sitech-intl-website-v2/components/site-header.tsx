@@ -19,9 +19,19 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
   const nextLocale: Locale = locale === "en" ? "zh" : "en";
   const localeLabel = locale === "en" ? "中文" : "EN";
 
+  function isActive(href: string) {
+    const localizedHref = withLocale(locale, href);
+
+    if (href === "/") {
+      return pathname === localizedHref;
+    }
+
+    return pathname === localizedHref || pathname.startsWith(`${localizedHref}/`);
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
         <Link href={withLocale(locale)} className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white p-1.5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
             <Image
@@ -32,20 +42,24 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
               className="h-8 w-8 object-contain"
             />
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="font-serif text-xl text-white">{siteContent.brand.name}</p>
-            <p className="text-xs uppercase tracking-[0.28em] text-accent">
-              {copy(locale, siteContent.brand.eyebrow)}
+            <p className="text-[11px] uppercase tracking-[0.24em] text-accent/90">
+              {copy(locale, siteContent.brand.headerTagline)}
             </p>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {siteContent.navigation.map((item) => (
             <Link
               key={item.href}
               href={withLocale(locale, item.href)}
-              className="text-sm text-white/75 transition hover:text-white"
+              className={`rounded-full px-3 py-2 text-sm transition ${
+                isActive(item.href)
+                  ? "bg-white/10 text-white"
+                  : "text-white/72 hover:bg-white/6 hover:text-white"
+              }`}
             >
               {copy(locale, item.label)}
             </Link>
@@ -86,7 +100,9 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
               <Link
                 key={item.href}
                 href={withLocale(locale, item.href)}
-                className="text-base text-white/80"
+                className={`rounded-2xl px-4 py-3 text-base ${
+                  isActive(item.href) ? "bg-white/10 text-white" : "text-white/80"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {copy(locale, item.label)}

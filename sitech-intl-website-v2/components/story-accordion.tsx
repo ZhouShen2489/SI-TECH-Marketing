@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 import { siteContent, copy, copyList } from "@/content/siteContent";
 import type { Locale } from "@/lib/site";
+import { withLocale } from "@/lib/site";
 
 export function StoryAccordion({ locale }: { locale: Locale }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -39,6 +41,7 @@ export function StoryAccordion({ locale }: { locale: Locale }) {
                     </span>
                   ))}
                 </div>
+                <p className="mt-4 text-sm uppercase tracking-[0.18em] text-tide">{copy(locale, story.solution)}</p>
                 <h3 className="mt-4 font-serif text-2xl text-ink lg:text-3xl">{copy(locale, story.title)}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, story.summary)}</p>
               </div>
@@ -59,6 +62,14 @@ export function StoryAccordion({ locale }: { locale: Locale }) {
                       <p className="mt-3 text-sm leading-7 text-slate-600">{copy(locale, section.text)}</p>
                     </div>
                   ))}
+                  <div className="pt-2">
+                    <Link
+                      href={withLocale(locale, "/solutions")}
+                      className="inline-flex rounded-full border border-ink px-5 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white"
+                    >
+                      {locale === "en" ? "Open Related Solutions" : "查看相关解决方案"}
+                    </Link>
+                  </div>
                 </div>
               </div>
             ) : null}
