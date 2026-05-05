@@ -1,11 +1,12 @@
 # Sitech Intl 美国获客流程图
 
-这个目录是给管理层汇报和内部对齐用的可视化页面，包含 4 张图：
+这个目录是给管理层汇报和内部对齐用的可视化页面，包含 5 张图：
 
-1. 三条商业路径总指导
-2. 获客流程
-3. 官网对外内容结构
-4. 商业路径三：MCN 场景样例
+1. 顶层总图：国内外获客与共赢飞轮
+2. 三条商业路径总指导
+3. 获客流程
+4. 官网对外内容结构
+5. 商业路径三：MCN 场景样例
 
 ## 本地预览
 
@@ -43,6 +44,7 @@ src/
   main.tsx
   styles.css
   diagrams/
+    StrategicFlywheelOverviewDiagram.tsx
     GlobalGTMFlowDiagram.tsx
     WebsiteContentFlowDiagram.tsx
     USBusinessPathDiagram.tsx

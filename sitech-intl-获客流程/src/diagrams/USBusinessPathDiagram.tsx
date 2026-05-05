@@ -167,6 +167,26 @@ function Arrow() {
   );
 }
 
+function SmallDownArrow({ color }: { color: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        display: "grid",
+        placeItems: "center",
+        height: 12,
+        color,
+        fontSize: 13,
+        fontWeight: 900,
+        lineHeight: 1,
+        opacity: 0.78,
+      }}
+    >
+      ↓
+    </div>
+  );
+}
+
 function PathCard({
   label,
   title,
@@ -246,30 +266,42 @@ function PathCard({
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-            gap: 8,
+            gridTemplateColumns: "minmax(0, 1fr)",
+            gap: 4,
           }}
         >
           {steps.map((step, index) => (
-            <div
-              key={step}
-              style={{
-                borderRadius: 14,
-                background: "#fff",
-                border: `1px solid ${colors.border}`,
-                padding: "10px 11px",
-                color: colors.text,
-                fontSize: 13,
-                fontWeight: 700,
-                lineHeight: 1.35,
-                minHeight: 48,
-              }}
-            >
-              <span style={{ color: colors.line, marginRight: 6 }}>
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              {step}
-            </div>
+            <React.Fragment key={step}>
+              <div
+                style={{
+                  borderRadius: 14,
+                  background: "#fff",
+                  border: `1px solid ${colors.border}`,
+                  padding: "8px 11px",
+                  color: colors.text,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  lineHeight: 1.3,
+                  minHeight: 34,
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <span
+                  style={{
+                    color: colors.line,
+                    marginRight: 6,
+                    flex: "0 0 auto",
+                  }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {step}
+              </div>
+              {index < steps.length - 1 ? (
+                <SmallDownArrow color={colors.line} />
+              ) : null}
+            </React.Fragment>
           ))}
         </div>
       </div>
@@ -414,12 +446,22 @@ function PresentationImportanceSection() {
           <img
             src="/generated/presentation-hod-lipson.png"
             alt="Hod Lipson presentation quote"
-            style={{ width: "78%", maxWidth: 640, display: "block", justifySelf: "center" }}
+            style={{
+              width: "78%",
+              maxWidth: 640,
+              display: "block",
+              justifySelf: "center",
+            }}
           />
           <img
             src="/generated/presentation-steve-jobs-macbook.png"
             alt="Steve Jobs MacBook Air envelope presentation quote"
-            style={{ width: "78%", maxWidth: 640, display: "block", justifySelf: "center" }}
+            style={{
+              width: "78%",
+              maxWidth: 640,
+              display: "block",
+              justifySelf: "center",
+            }}
           />
         </div>
       </div>
@@ -464,25 +506,29 @@ function SideStepList({
         }}
       >
         {items.map((item, index) => (
-          <div
-            key={item}
-            style={{
-              borderRadius: 14,
-              background: "#fff",
-              border: `1px solid ${colors.border}`,
-              color: colors.text,
-              minHeight: 46,
-              padding: "9px 11px",
-              fontSize: 13,
-              fontWeight: 800,
-              lineHeight: 1.25,
-            }}
-          >
-            <span style={{ color: colors.line, marginRight: 6 }}>
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            {item}
-          </div>
+          <React.Fragment key={item}>
+            <div
+              style={{
+                borderRadius: 14,
+                background: "#fff",
+                border: `1px solid ${colors.border}`,
+                color: colors.text,
+                minHeight: 46,
+                padding: "9px 11px",
+                fontSize: 13,
+                fontWeight: 800,
+                lineHeight: 1.25,
+              }}
+            >
+              <span style={{ color: colors.line, marginRight: 6 }}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              {item}
+            </div>
+            {index < items.length - 1 ? (
+              <SmallDownArrow color={colors.line} />
+            ) : null}
+          </React.Fragment>
         ))}
       </div>
     </div>
@@ -639,16 +685,16 @@ function ProductCoCreationCard() {
               marginBottom: 10,
             }}
           >
-            ？ 为什么国内必须有主人翁心态 ？
+            为什么国内团队的主动性很重要
           </div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
-              "完成产品的关键资源都在国内，不在美国前端",
-              "美国能提供产品方向、客户反馈和市场压力。方向的内化、设计和开发必须由国内主动完成",
+              "完成合作/产品的关键资源都在国内，不在美国前端",
+              "美国能提供产品方向、客户反馈和市场趋势。方向的内化、所有设计和开发有且只能由国内主动完成",
               "国内对产品负责，美国才能更好对客户和市场负责",
-              "美国办公室是辅助国内有野心的团队实现产品出海、高收益、产品运营、部门扩张和人才流入的催化剂。美国办公室能协助验证目标市场、完善产品设计、推动客户成功，但不替代或指挥国内团队的任何角色",
-              "产品的成功最终取决于国内团队是否想要在海外成功，并提供优秀产品",
-              "目前美国人员配置不足，无法独立承担真正产品责任。国内团队需要有主人翁心态，主动承担产品责任，才能真正发挥美国办公室价值，形成良性循环",
+              "美国办公室是辅助国内有野心的团队实现产品出海、高收益、产品运营、部门扩张和人才流入的海外机会。美国办公室愿意去协助，验证目标市场、完善产品设计、推动客户成功，但无法替代或指挥国内团队的任何角色去实现这些事情",
+              "产品的成功最终取决于国内团队是否想在海外成功并成为公司的‘领头羊’，并提供优秀产品",
+              "目前美国人员资源有限，只能借助国内的大杠杆去撬动发展。国内团队需要有主人心态，主动承担产品责任，才能真正发挥美国办公室价值。美国办公室也会在过程中变得壮大，去承担更多责任",
             ].map((item) => (
               <div
                 key={item}
@@ -685,12 +731,12 @@ function ProductCoCreationCard() {
               marginBottom: 10,
             }}
           >
-            ？为什么 PPT / Demo 阶段就要拿去获客 ？
+            为什么 PPT / Demo 前期阶段就要拿去获客
           </div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
               "前提：展示面要做好，让客户看得懂、愿意聊",
-              "业务可能性最重要，没有业务可能，工具/产品都是白搭",
+              "业务最重要，没有业务可能性，工具/产品都是白搭",
               "可以在花费较少资源的情况下低成本试探市场兴趣，基于反馈快速调整方向",
               "美国办公室可帮助团队找客户、找合作伙伴、拿真实反馈",
               "避免投入大量资源后，才发现产品其实不好卖",
@@ -847,14 +893,14 @@ export default function USBusinessPathDiagram({
           tone="resource"
           description="把国内已有的好的产品、解决方案、案例和行业经验，转化成美国客户看得懂、愿意继续了解的展示面；美国侧负责全球获客、沟通和机会识别，成熟机会再导入国内支撑。"
           steps={[
-            "国内优势资源-全公司判断",
-            "能力/材料整理",
-            "美国化表达",
-            "形成展示面",
-            "获客并激发客户兴趣",
+            "国内优势确定-公司三方判断（管理层，国内团队，美国办公室）",
+            "优势解决方案或产品的材料整理",
+            "美国化对外表达",
+            "形成面向客户展示面",
+            "开启获客并激发客户兴趣",
             "形成合作机会",
             "国内支撑合作交付，国外推动客户成功",
-            "共同收入",
+            "获取共同收入",
           ]}
           positioningItems={[
             "针对国内非产品化但有能力的产品/解决方案",
@@ -882,13 +928,13 @@ export default function USBusinessPathDiagram({
             "只做美国侧能胜任的合作",
             "不承诺复杂交付，如需复杂交付，转给路径一或路径三",
             "优先扩大本地交流圈",
-            "合作以渠道和转介绍为主",
+            "合作以渠道合作和转介绍为主",
+            "通过3条路径互利共赢，逐步推动美国团队和业务的扩大",
           ]}
           canDoItems={[
             "做美国侧展示面",
-            "联系之后可以实地拜访交流",
             "寻找推荐关系",
-            "设计轻合作方式",
+            "设计美国办公室的合作获客流程",
             "把复杂机会转给路径一/三",
           ]}
         />
@@ -1086,7 +1132,7 @@ export default function USBusinessPathDiagram({
               "提供市场风向，提升国内对海外市场的信心和野心",
               "和本地和全球客户建立沟通联系",
               "中美公司功能互补、共同受益，形成良性循环",
-              "美国办公室成为国内产品出海、客户成功和运营的核心支撑力量",
+              "美国办公室成为国内产品出海、客户成功和运营的辅助力量",
             ].map((item) => (
               <div
                 key={item}

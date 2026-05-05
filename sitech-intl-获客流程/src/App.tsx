@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import html2canvas from "html2canvas";
+import StrategicFlywheelOverviewDiagram from "./diagrams/StrategicFlywheelOverviewDiagram";
 import GlobalGTMFlowDiagram from "./diagrams/GlobalGTMFlowDiagram";
 import WebsiteContentFlowDiagram from "./diagrams/WebsiteContentFlowDiagram";
 import USBusinessPathDiagram from "./diagrams/USBusinessPathDiagram";
@@ -33,6 +34,7 @@ function PngPreview({ src, title }: { src: string; title: string }) {
 }
 
 export default function App() {
+  const strategicFlywheelDiagramRef = useRef<HTMLDivElement>(null);
   const businessPathDiagramRef = useRef<HTMLDivElement>(null);
   const overviewDiagramRef = useRef<HTMLDivElement>(null);
   const websiteDiagramRef = useRef<HTMLDivElement>(null);
@@ -62,7 +64,7 @@ export default function App() {
           <p>
             搭建中的官网链接：
             <a
-              href="https://github.com/ZhouShen2489/sitech-intl-website"
+              href="https://sitech-intl-website.vercel.app/zh"
               target="_blank"
               rel="noreferrer"
             >
@@ -74,12 +76,22 @@ export default function App() {
           <button
             onClick={() =>
               exportDiagram(
+                strategicFlywheelDiagramRef.current,
+                "strategic-flywheel-overview-cn.png",
+              )
+            }
+          >
+            下载图 1 PNG
+          </button>
+          <button
+            onClick={() =>
+              exportDiagram(
                 businessPathDiagramRef.current,
                 "us-business-path-diagram-cn.png",
               )
             }
           >
-            下载图 1 PNG
+            下载图 2 PNG
           </button>
           <button
             onClick={() =>
@@ -89,7 +101,7 @@ export default function App() {
               )
             }
           >
-            下载图 2 PNG
+            下载图 3 PNG
           </button>
           <button
             onClick={() =>
@@ -99,7 +111,7 @@ export default function App() {
               )
             }
           >
-            下载图 3 PNG
+            下载图 4 PNG
           </button>
           <button
             onClick={() =>
@@ -109,7 +121,7 @@ export default function App() {
               )
             }
           >
-            下载图 4 PNG
+            下载图 5 PNG
           </button>
           <button className="secondary" onClick={() => window.print()}>
             打印 / 导出 PDF
@@ -120,7 +132,22 @@ export default function App() {
       <section className="diagram-stack">
         <div className="diagram-panel">
           <div className="diagram-meta">
-            <h2>Part 1 / 图 1：三条商业路径总指导</h2>
+            <h2>Part 0 / 图 1：顶层总图 - 国内外获客与共赢飞轮</h2>
+            <p>
+              先给管理层讲清楚为什么要用“简历/展示面”去获客，为什么国内主动做和海外机会要互相增强。
+            </p>
+          </div>
+          <div
+            ref={strategicFlywheelDiagramRef}
+            data-export-target="strategic-flywheel-diagram"
+          >
+            <StrategicFlywheelOverviewDiagram />
+          </div>
+        </div>
+
+        <div className="diagram-panel">
+          <div className="diagram-meta">
+            <h2>Part 1 / 图 2：三条商业路径总指导</h2>
             <p>
               给高层看的总体计划：美国办公室后续所有动作，都围绕三条路径展开。
             </p>
@@ -135,7 +162,7 @@ export default function App() {
 
         <div className="diagram-panel">
           <div className="diagram-meta">
-            <h2>Part 2 / 图 2：具体执行 - 获客流程</h2>
+            <h2>Part 2 / 图 3：具体执行 - 获客流程</h2>
             <p>告诉高层我们具体怎么获客、怎么协同、怎么形成线索闭环。</p>
           </div>
           <div ref={overviewDiagramRef} data-export-target="overview-diagram">
@@ -145,7 +172,7 @@ export default function App() {
 
         <div className="diagram-panel">
           <div className="diagram-meta">
-            <h2>Part 2 / 图 3：具体执行 - 官网对外内容结构</h2>
+            <h2>Part 2 / 图 4：具体执行 - 官网对外内容结构</h2>
             <p>
               告诉高层官网具体怎么做，突出 Solutions、合作伙伴 Products、O2O
               Marketplace、Partnership、About 与统一转化入口。
@@ -158,7 +185,7 @@ export default function App() {
 
         <div className="diagram-panel">
           <div className="diagram-meta">
-            <h2>Part 3 / 图 4：商业路径-MCN场景</h2>
+            <h2>Part 3 / 图 5：商业路径-MCN场景</h2>
             <p>
               以会议讨论的 MCN 场景作为样例，展示路径三如何从场景
               MVP、美国获客、客户反馈走向产品迭代和合作运营。
@@ -177,25 +204,29 @@ export default function App() {
         <div className="diagram-meta">
           <h2>PNG 预览</h2>
           <p>
-            这里直接展示脚本生成的最终 PNG。导出脚本会把两张图写入
+            这里直接展示脚本生成的最终 PNG。导出脚本会把所有图写入
             `public/generated/`，每次刷新页面都会尝试展示最新版本。
           </p>
         </div>
         <div className="png-preview-grid">
           <PngPreview
-            title="图 1 PNG：三条商业路径总指导"
+            title="图 1 PNG：顶层总图 - 国内外获客与共赢飞轮"
+            src="/generated/strategic-flywheel-overview-cn.png"
+          />
+          <PngPreview
+            title="图 2 PNG：三条商业路径总指导"
             src="/generated/us-business-path-diagram-cn.png"
           />
           <PngPreview
-            title="图 2 PNG：具体执行 - 获客流程"
+            title="图 3 PNG：具体执行 - 获客流程"
             src="/generated/global-gtm-flow-diagram-cn.png"
           />
           <PngPreview
-            title="图 3 PNG：具体执行 - 官网结构"
+            title="图 4 PNG：具体执行 - 官网结构"
             src="/generated/website-content-flow-diagram-cn.png"
           />
           <PngPreview
-            title="图 4 PNG：MCN 场景 Path 3 Operating Loop"
+            title="图 5 PNG：MCN 场景 Path 3 Operating Loop"
             src="/generated/mcn-ai-operation-path-diagram-cn.png"
           />
         </div>
