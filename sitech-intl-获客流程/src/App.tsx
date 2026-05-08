@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import html2canvas from "html2canvas";
-import StrategicFlywheelOverviewDiagram from "./diagrams/StrategicFlywheelOverviewDiagram";
+import USCompanyPositionPathDiagram from "./diagrams/USCompanyPositionPathDiagram";
 import GlobalGTMFlowDiagram from "./diagrams/GlobalGTMFlowDiagram";
 import WebsiteContentFlowDiagram from "./diagrams/WebsiteContentFlowDiagram";
 import USBusinessPathDiagram from "./diagrams/USBusinessPathDiagram";
@@ -34,7 +34,7 @@ function PngPreview({ src, title }: { src: string; title: string }) {
 }
 
 export default function App() {
-  const strategicFlywheelDiagramRef = useRef<HTMLDivElement>(null);
+  const usCompanyPositionPathDiagramRef = useRef<HTMLDivElement>(null);
   const businessPathDiagramRef = useRef<HTMLDivElement>(null);
   const overviewDiagramRef = useRef<HTMLDivElement>(null);
   const websiteDiagramRef = useRef<HTMLDivElement>(null);
@@ -76,8 +76,8 @@ export default function App() {
           <button
             onClick={() =>
               exportDiagram(
-                strategicFlywheelDiagramRef.current,
-                "strategic-flywheel-overview-cn.png",
+                usCompanyPositionPathDiagramRef.current,
+                "us-company-position-path-cn.png",
               )
             }
           >
@@ -132,16 +132,16 @@ export default function App() {
       <section className="diagram-stack">
         <div className="diagram-panel">
           <div className="diagram-meta">
-            <h2>Part 0 / 图 1：顶层总图 - 国内外获客与共赢飞轮</h2>
+            <h2>Part 0 / 图 1：美国公司定位与四步发展路径</h2>
             <p>
-              先给管理层讲清楚为什么要用“简历/展示面”去获客，为什么国内主动做和海外机会要互相增强。
+              放在最上方的总图：先讲清楚美国公司的两个定位和四步发展路径，再衔接国内外共赢飞轮与后续执行图。
             </p>
           </div>
           <div
-            ref={strategicFlywheelDiagramRef}
-            data-export-target="strategic-flywheel-diagram"
+            ref={usCompanyPositionPathDiagramRef}
+            data-export-target="us-company-position-path-diagram"
           >
-            <StrategicFlywheelOverviewDiagram />
+            <USCompanyPositionPathDiagram />
           </div>
         </div>
 
@@ -210,8 +210,8 @@ export default function App() {
         </div>
         <div className="png-preview-grid">
           <PngPreview
-            title="图 1 PNG：顶层总图 - 国内外获客与共赢飞轮"
-            src="/generated/strategic-flywheel-overview-cn.png"
+            title="图 1 PNG：美国公司定位与四步发展路径"
+            src="/generated/us-company-position-path-cn.png"
           />
           <PngPreview
             title="图 2 PNG：三条商业路径总指导"

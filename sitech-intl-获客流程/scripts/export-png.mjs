@@ -13,8 +13,8 @@ const baseUrl = `http://127.0.0.1:${port}`;
 
 const outputs = [
   {
-    selector: '[data-export-target="strategic-flywheel-diagram"]',
-    path: path.join(outputDir, "strategic-flywheel-overview-cn.png"),
+    selector: '[data-export-target="us-company-position-path-diagram"]',
+    path: path.join(outputDir, "us-company-position-path-cn.png"),
   },
   {
     selector: '[data-export-target="business-path-diagram"]',
