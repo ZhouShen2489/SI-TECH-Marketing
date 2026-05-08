@@ -596,6 +596,7 @@ function ProductCoCreationCard() {
           title="左侧：美国需要做的事情"
           tone="resource"
           items={[
+            "提供市场调研、竞品分析、使用场景，可食用文字/图片/视频等方式",
             "基于国内的业务 PPT / Demo 开始对外交流",
             "寻找合作伙伴和感兴趣客户",
             "对接合作客户，获取反馈，推动合作",
